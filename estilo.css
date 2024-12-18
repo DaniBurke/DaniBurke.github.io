@@ -1,0 +1,174 @@
+/* Estilo base para asegurar que html y body ocupen toda la pantalla */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Fondo animado */
+body {
+    background: linear-gradient(250deg, #ff9adb, #8de6ff);
+    background-size: 400% 400%;
+    animation: moverFondo 8s ease infinite;
+}
+
+@keyframes moverFondo {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Organiza contenido en columna */
+    justify-content: flex-start; /* Empuja contenido hacia el top */
+    align-items: center; /* Centra contenido horizontalmente */
+    height: 90%; /* Ocupa toda la pantalla */
+/* Estilo para el título */
+/* Estilo para el título */
+}
+.titulo h1 {
+    font-size: 4rem;
+    /* Tamaño del texto */
+    color: #fff6a6;
+    /* Color del texto */
+    font-family: 'Arial', sans-serif;
+    /* Fuente legible */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Sombra para visibilidad */
+    margin: 50px 0 20px;
+    /* Agregar margen superior para bajar el título */
+    text-align: center;
+    /* Asegura que el texto esté centrado */
+    font-weight: 900;
+    /* Aumenta el grosor de las letras */
+
+    -webkit-text-stroke: 2px black;
+    /* Contorno negro de las letras */
+}
+
+/* Contenedor para las tarjetas */
+.cont {
+    perspective: 800px;
+    width: 500px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.doubleCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; /* Necesario para que la rotación se vea en 3D */
+    transition: transform 0.2s ease-out; /* Transición suave para el giro */
+    cursor: pointer;
+}
+
+.frontCard,
+.backCard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la parte trasera cuando no es visible */
+    top: 0;
+    left: 0;
+}
+
+/* Parte trasera inicialmente volteada */
+.backCard {
+    transform: rotateY(180deg); /* Parte trasera volteada inicialmente */
+}
+
+/* Ajuste de las imágenes para que no se deformen */
+.frontCard img,
+.backCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Estilo para el título */
+.titulo h1 {
+    font-size: 4rem;
+    color: #fff6a6;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin: 50px 0 20px;
+    text-align: center;
+    font-weight: 900;
+    -webkit-text-stroke: 2px black;
+}
+
+/* Contenedor frontal de la tarjeta */
+.frontCard {
+    position: relative;
+    overflow: hidden; /* Evita que las estrellas se salgan del contenedor */
+    z-index: 1; /* Asegura que las estrellas estén por encima de la imagen */
+}
+
+/* Estrellas dinámicas */
+.frontCard .star {
+    position: absolute;
+    width: 12px; /* Tamaño inicial de las estrellas */
+    height: 12px;
+    background: transparent;
+    clip-path: polygon(
+        50% 0%,    /* Punta superior */
+        60% 35%,   /* Parte derecha superior */
+        100% 50%,  /* Punta derecha */
+        60% 65%,   /* Parte derecha inferior */
+        50% 100%,  /* Punta inferior */
+        40% 65%,   /* Parte izquierda inferior */
+        0% 50%,    /* Punta izquierda */
+        40% 35%    /* Parte izquierda superior */
+    ); /* Forma de estrella de cuatro puntas */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 223, 0, 0.8) 70%, rgba(255, 255, 255, 0) 100%);
+    animation: brillar 2s infinite ease-in-out, mover 5s infinite ease-in-out;
+    opacity: 0; /* Inicialmente invisibles */
+}
+
+/* Animación de brillo */
+@keyframes brillar {
+    0%, 100% {
+        transform: scale(0); /* Tamaño inicial pequeño */
+        opacity: 0; /* Invisible */
+    }
+    50% {
+        transform: scale(1.5); /* La estrella crece y brilla */
+        opacity: 1; /* Totalmente visible */
+    }
+}
+
+/* Movimiento aleatorio */
+@keyframes mover {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(20px, -30px); /* Movimiento hacia un lado */
+    }
+    50% {
+        transform: translate(-15px, 25px); /* Movimiento opuesto */
+    }
+    75% {
+        transform: translate(30px, 15px); /* Movimiento en diagonal */
+    }
+    100% {
+        transform: translate(0, 0); /* Regresa a la posición original */
+    }
+}
+
+
+
+
